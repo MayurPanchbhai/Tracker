@@ -9,7 +9,8 @@ export const Home = () => {
       positionOptions: {
         enableHighAccuracy: true,
       },
-      userDecisionTimeout: 10000,
+      watchPosition: true,
+      userDecisionTimeout: 5000,
     });
 
   useEffect(() => {
