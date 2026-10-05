@@ -8,9 +8,11 @@ export const Home = () => {
     useGeolocated({
       positionOptions: {
         enableHighAccuracy: true,
+        timeout: 1000,
       },
       watchPosition: true,
-      userDecisionTimeout: 5000,
+      geolocationProvider: navigator.geolocation,
+      // userDecisionTimeout: 5000,
     });
 
   useEffect(() => {
