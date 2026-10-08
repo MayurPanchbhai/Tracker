@@ -1,6 +1,6 @@
 /** @format */
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useGeolocated } from "react-geolocated";
 
 export const Home = () => {
@@ -12,7 +12,7 @@ export const Home = () => {
       },
       watchPosition: true,
       geolocationProvider: navigator.geolocation,
-      // userDecisionTimeout: 5000,
+      userDecisionTimeout: 5000,
     });
 
   useEffect(() => {
