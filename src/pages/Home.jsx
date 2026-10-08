@@ -10,7 +10,7 @@ export const Home = () => {
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
     useGeolocated({
       positionOptions: {
-        enableHighAccuracy: true,
+        enableHighAccuracy: false,
         timeout: 1000,
       },
       watchPosition: true,
