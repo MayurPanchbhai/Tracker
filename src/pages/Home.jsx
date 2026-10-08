@@ -1,6 +1,6 @@
 /** @format */
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useGeolocated } from "react-geolocated";
 import distanceCal from "../utils/distanceCal";
 
@@ -18,7 +18,7 @@ export const Home = () => {
       userDecisionTimeout: 5000,
     });
   console.log("called");
-  const originPoint = { L1: coords?.latitude, L2: coords?.longitude };
+  const originPoint = useRef({ L1: coords?.latitude, L2: coords?.longitude });
 
   useEffect(() => {
     // setDistance(distanceCal());
