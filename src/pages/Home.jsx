@@ -2,8 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useGeolocated } from "react-geolocated";
+import distanceCal from "../utils/distanceCal";
 
 export const Home = () => {
+  const [distance, setDistance] = useState(0);
+  const [originPoint, setOriginPoint] = useState({ L1: null, L2: null });
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
     useGeolocated({
       positionOptions: {
@@ -14,10 +17,12 @@ export const Home = () => {
       geolocationProvider: navigator.geolocation,
       userDecisionTimeout: 5000,
     });
+  console.log("called");
 
   useEffect(() => {
-    console.log("ran");
-    console.log(coords);
+    // setDistance(distanceCal());
+
+    setOriginPoint({ L1: coords?.latitude, L2: coords?.longitude });
   }, [coords?.latitude, coords?.longitude]);
 
   if (!isGeolocationAvailable) {
@@ -53,6 +58,10 @@ export const Home = () => {
           </p>
           <p className="text-xs text-gray-400">
             Accuracy: ±{Math.round(coords.accuracy)} meters
+          </p>
+
+          <p>
+            inital point {originPoint.L1} + {originPoint.L2}
           </p>
         </div>
       ) : (
