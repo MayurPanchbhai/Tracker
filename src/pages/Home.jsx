@@ -6,7 +6,7 @@ import distanceCal from "../utils/distanceCal";
 
 export const Home = () => {
   const [distance, setDistance] = useState(0);
-  const [originPoint, setOriginPoint] = useState({ L1: null, L2: null });
+
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
     useGeolocated({
       positionOptions: {
@@ -18,11 +18,11 @@ export const Home = () => {
       userDecisionTimeout: 5000,
     });
   console.log("called");
+  const originPoint = { L1: coords?.latitude, L2: coords?.longitude };
 
   useEffect(() => {
     // setDistance(distanceCal());
-
-    setOriginPoint({ L1: coords?.latitude, L2: coords?.longitude });
+    // setOriginPoint({ L1: coords?.latitude, L2: coords?.longitude });
   }, [coords?.latitude, coords?.longitude]);
 
   if (!isGeolocationAvailable) {
